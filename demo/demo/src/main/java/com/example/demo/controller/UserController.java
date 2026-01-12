@@ -1,10 +1,15 @@
 package com.example.demo.controller;
 
 //Getting annotations for REST controller
+import com.example.demo.dto.UserDTO;
+import com.example.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -12,9 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class UserController {
 
+    @Autowired // Dependency Injection
+    private UserService userService;
+
     @GetMapping("/getUser")
-    public String getUser() {
-        return "Received Users";
+    public List<UserDTO> getUser() {
+        return userService.findAllUsers();
     }
 }
 
