@@ -27,6 +27,21 @@ public class UserController {
 
         return userService.addUser(userDTO);
     }
+
+    @PutMapping("/updateUser")
+    public UserDTO updateUser(@RequestBody UserDTO userDTO){ // Mapping request body to UserDTO
+        return userService.updateUser(userDTO);
+    }
+
+    @DeleteMapping("/deleteUser")
+    public String deleteUser(@RequestBody UserDTO userDTO) { // Mapping request body to UserDTO
+        return userService.deleteUser(userDTO);
+    }
+
+    @DeleteMapping("/deleteUser/{id}")
+    public String deleteUserById(@PathVariable int id) { // Mapping path variable to id
+        return userService.deleteUserById(id);
+    }
 }
 
 
