@@ -27,4 +27,11 @@ public class UserService {
         List<User> usersList = userRepo.findAll(); // Fetch all users from the database
         return modelMapper.map(usersList, new TypeToken<List<UserDTO>>(){}.getType()); // Map List<User> to List<UserDTO>
     }
+
+    //Adding a user
+    public UserDTO addUser(UserDTO userDTO){
+
+        userRepo.save(modelMapper.map(userDTO, User.class));
+        return userDTO;
+    }
 }
