@@ -22,6 +22,11 @@ public class UserController {
         return userService.findAllUsers();
     }
 
+    @GetMapping("/getUserById/{id}")
+    public UserDTO getUserById(@PathVariable int id) { // Mapping path variable to id
+        return userService.getUserById(id);
+    }
+
     @PostMapping("/addUser")
     public UserDTO addUser(@RequestBody UserDTO userDTO){ // Mapping request body to UserDTO
 

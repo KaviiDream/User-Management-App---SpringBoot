@@ -28,6 +28,12 @@ public class UserService {
         return modelMapper.map(usersList, new TypeToken<List<UserDTO>>(){}.getType()); // Map List<User> to List<UserDTO>
     }
 
+    //Get a user by id
+    public UserDTO getUserById(int id){
+        User user = userRepo.findById(id).orElse(null); // Fetch user by id
+        return modelMapper.map(user, UserDTO.class); // Map User to UserDTO
+    }
+
     //Adding a user
     public UserDTO addUser(UserDTO userDTO){
 
