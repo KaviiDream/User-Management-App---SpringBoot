@@ -6,6 +6,8 @@ function UserForm() {
 
     const [userId, setUserId] = useState('');
     const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
 
     const navigate = useNavigate();
 
@@ -14,7 +16,9 @@ function UserForm() {
 
         if(
             !userId ||
-            !userName
+            !userName||
+            !email||
+            !phone
         ){
             alert("All fields are mandatory!");
             return;
@@ -22,7 +26,9 @@ function UserForm() {
 
     const newUser = {
         id: userId,
-        name: userName
+        name: userName,
+        email: email,
+        phone: phone
     }
 
     axios.post("http://localhost:8085/api/v1/addUser", newUser).
@@ -31,6 +37,8 @@ function UserForm() {
         navigate("/users");
         setUserId('');
         setUserName('');
+        setEmail('');
+        setPhone('');
     }).catch((err)=>{
         alert("Error adding user");
         console.log(err);
@@ -63,7 +71,27 @@ function UserForm() {
                     onChange={(e) => setUserName(e.target.value)}
                 />
             </div>
+            <div>
+                <label htmlFor="email">Email:</label>
+                <input
 
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
+            <div>
+                <label htmlFor="phone">Phone:</label>
+                <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                />
+            </div>
             <button type='submit'>Add User</button>
 
         </form>

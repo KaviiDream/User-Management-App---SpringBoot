@@ -11,10 +11,14 @@ function UpdateUser() {
     const [isLoading, setIsLoading] = useState(true);
     const [userId, setUserId] = useState('');
     const [userName, setUserName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
 
     const [formData, setFormData] = useState({
         id: '',
-        name: ''
+        name: '',
+        email: '',
+        phone: ''
     });
 
     useEffect(() => {
@@ -79,6 +83,26 @@ function UpdateUser() {
                     id="name"
                     name="name"
                     value={formData.name}
+                    onChange={handleChange}
+                />
+            </div>
+            <div>
+                <label htmlFor="email">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                />
+            </div>
+            <div>
+                <label htmlFor="phone">Phone:</label>
+                <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
                     onChange={handleChange}
                 />
             </div>

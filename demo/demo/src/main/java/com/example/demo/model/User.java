@@ -16,5 +16,7 @@ public class User {
     @Id   //making Id as primary key
     private int id;
     private String name;
+    private String email;
+    private String phone;
 
 }

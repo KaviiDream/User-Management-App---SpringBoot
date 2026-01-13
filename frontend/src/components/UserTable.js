@@ -42,12 +42,23 @@ function UserTable() {
 
         <h2>User List</h2>
         <table>
-            <thead>User ID | User Name</thead>
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            
             <tbody>
                 {users.map((user) => (
                     <tr key={user.id}>
                         <td>{user.id}</td>
                         <td>{user.name}</td>
+                        <td>{user.email}</td>
+                        <td>{user.phone}</td>
                         <td><Link to={`/updateUser/${user.id}`} className="action-btn btn-update">
                                 Update
                             </Link>

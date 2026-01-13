@@ -30,7 +30,7 @@ public class UserService {
 
     //Get a user by id
     public UserDTO getUserById(int id){
-        User user = userRepo.findById(id).orElse(null); // Fetch user by id
+        User user = userRepo.findUserById(id); // Fetch user by id
         return modelMapper.map(user, UserDTO.class); // Map User to UserDTO
     }
 
